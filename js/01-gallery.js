@@ -4,7 +4,7 @@ import { galleryItems } from "./gallery-items.js";
 console.log(galleryItems);
 
 const galleryContainer = document.querySelector(".gallery");
-const galerryImage = document.querySelector(".gallery__item");
+
 const galleryCardsMarkup = createGalleryCardsMarkup(galleryItems);
 
 function createGalleryCardsMarkup(galleryItems) {
@@ -41,17 +41,21 @@ function onPaletteContainerClick(e) {
 
   const modalWindow = basicLightbox.create(
     `
-  		<img width="1400" height="900" src="${dataSourseImg}">
-  	`
+    		<img width="1400" height="900" src="${dataSourseImg}">
+    	`
   );
   modalWindow.show();
 
-  window.addEventListener("keydown", onEscKeyPress);
-
-  function onEscKeyPress(e) {
+  // window.addEventListener("keydown", onEscKeyPress);
+  // function onEscKeyPress(e) {
+  //   if (e.code === "Escape") {
+  //     modalWindow.close();
+  //     window.removeEventListener("keydown", onEscKeyPress);
+  //   }
+  // }
+  galleryContainer.addEventListener("keydown", (e) => {
     if (e.code === "Escape") {
       modalWindow.close();
-      window.removeEventListener("keydown", onEscKeyPress);
     }
-  }
+  });
 }
