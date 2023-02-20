@@ -21,6 +21,11 @@ function createGalleryCardsMarkup(galleryItems) {
 
 galleryContainer.insertAdjacentHTML("beforeend", galleryCardsMarkup);
 
+let gallery = new SimpleLightbox(".gallery a", {
+  captionDelay: 250,
+  captionsData: "alt",
+});
+
 galleryContainer.addEventListener("click", onPaletteContainerClick);
 
 function onPaletteContainerClick(e) {
@@ -28,9 +33,4 @@ function onPaletteContainerClick(e) {
   if (e.target.nodeName !== "IMG") {
     return;
   }
-
-  let gallery = new SimpleLightbox(".gallery a", {
-    captionDelay: 250,
-    captionsData: "alt",
-  });
 }
